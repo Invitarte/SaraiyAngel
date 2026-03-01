@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Invitación A&S</title>
+
+<!-- Fuentes -->
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+  --azul:#0b1c2d;
+  --rosa:#e6b7c8;
+  --rosagold:#e8b4b8;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+  background:var(--azul);
+  font-family:'Poppins',sans-serif;
+  color:var(--rosagold);
+  overflow-x:hidden;
+}
+
+/* ---------------- SOBRE INICIAL ---------------- */
+
+#portada{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  position:relative;
+  background:linear-gradient(145deg,#0b1c2d,#122c44);
+  transition:1s;
+}
+
+.sobre{
+  width:90%;
+  max-width:420px;
+  height:280px;
+  background:#10283f;
+  position:relative;
+  border-radius:10px;
+  box-shadow:0 15px 40px rgba(0,0,0,0.6);
+  overflow:hidden;
+}
+
+.solapa{
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:#0e2235;
+  clip-path:polygon(0 0,100% 0,50% 60%);
+  transform-origin:top;
+  transition:1s;
+}
+
+.contenido-sobre{
+  position:absolute;
+  width:100%;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:20px;
+}
+
+.contenido-sobre h1{
+  font-family:'Great Vibes',cursive;
+  font-size:40px;
+}
+
+.contenido-sobre p{
+  font-size:14px;
+  margin:10px 0;
+}
+
+button{
+  background:transparent;
+  border:1px solid var(--rosagold);
+  color:var(--rosagold);
+  padding:12px 28px;
+  margin-top:15px;
+  border-radius:30px;
+  font-size:16px;
+  cursor:pointer;
+  transition:0.4s;
+}
+
+button:hover{
+  background:var(--rosagold);
+  color:var(--azul);
+}
+
+/* Animación abrir */
+.abrir .solapa{
+  transform:rotateX(180deg);
+}
+
+/* ---------------- SECCIÓN INTERIOR ---------------- */
+
+#invitacion{
+  display:none;
+  padding:40px 20px;
+  text-align:center;
+  animation:fade 1.5s forwards;
+}
+
+@keyframes fade{
+  from{opacity:0;}
+  to{opacity:1;}
+}
+
+.iniciales{
+  font-family:'Great Vibes',cursive;
+  font-size:70px;
+  margin-bottom:30px;
+}
+
+/* Calendario */
+.calendario{
+  margin:20px auto;
+  max-width:350px;
+}
+
+.calendario h2{
+  font-family:'Great Vibes',cursive;
+  margin-bottom:10px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(7,1fr);
+  gap:5px;
+}
+
+.grid div{
+  padding:10px 0;
+  border:1px solid rgba(255,255,255,0.1);
+  font-size:14px;
+}
+
+.heart{
+  position:relative;
+  color:white;
+  font-weight:bold;
+}
+
+.heart::before{
+  content:"❤";
+  position:absolute;
+  font-size:32px;
+  color:var(--rosagold);
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  z-index:-1;
+}
+
+/* Títulos */
+h3{
+  font-family:'Great Vibes',cursive;
+  font-size:42px;
+  margin:40px 0 10px;
+}
+
+/* Cuenta regresiva */
+#countdown{
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  margin:20px 0;
+  font-size:18px;
+}
+
+#countdown div{
+  background:rgba(255,255,255,0.05);
+  padding:15px;
+  border-radius:15px;
+  min-width:70px;
+}
+
+/* Eventos */
+.eventos{
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+  margin-top:30px;
+}
+
+.evento{
+  flex:1;
+  background:rgba(255,255,255,0.05);
+  padding:15px;
+  border-radius:15px;
+}
+
+/* Fotos */
+.slider{
+  position:relative;
+  max-width:320px;
+  margin:30px auto;
+}
+
+.slider img{
+  width:100%;
+  border-radius:20px;
+  display:none;
+}
+
+.slider img.active{
+  display:block;
+}
+
+.flecha{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  background:rgba(0,0,0,0.5);
+  border:none;
+  padding:8px 12px;
+  cursor:pointer;
+}
+
+.prev{left:0;}
+.next{right:0;}
+
+</style>
+</head>
+<body>
+
+<!-- PORTADA -->
+<section id="portada">
+  <div class="sobre" id="sobre">
+    <div class="solapa"></div>
+    <div class="contenido-sobre">
+      <h1>A & S</h1>
+      <p>El amor es la razón de este día,<br>y tu presencia lo hará aún más especial.</p>
+      <button onclick="abrirInvitacion()">Ver invitación</button>
+    </div>
+  </div>
+</section>
+
+<!-- INVITACIÓN -->
+<section id="invitacion">
+
+<div class="iniciales">A & S</div>
+
+<div class="calendario">
+  <h2>Mayo 2026</h2>
+  <div class="grid">
+    <div>L</div><div>M</div><div>M</div><div>J</div><div>V</div><div>S</div><div>D</div>
+    <div></div><div></div><div></div><div></div><div>1</div><div>2</div><div>3</div>
+    <div>4</div><div>5</div><div>6</div><div>7</div><div>8</div><div>9</div><div>10</div>
+    <div>11</div><div>12</div><div>13</div><div>14</div><div>15</div><div class="heart">16</div><div>17</div>
+    <div>18</div><div>19</div><div>20</div><div>21</div><div>22</div><div>23</div><div>24</div>
+    <div>25</div><div>26</div><div>27</div><div>28</div><div>29</div><div>30</div><div>31</div>
+  </div>
+</div>
+
+<h3>Nuestra Boda<br>Ángel & Saraí</h3>
+
+<div id="countdown"></div>
+
+<p>El amor es la razón de este día, y tu presencia lo hará aún más especial.<br>
+Con la bendición de Dios queremos compartir este día contigo.</p>
+
+<h3>Nuestra Canción</h3>
+<a href="https://open.spotify.com/" target="_blank">
+<button>Escuchar en Spotify</button>
+</a>
+
+<h3>Nuestra Historia</h3>
+
+<div class="slider">
+  <button class="flecha prev" onclick="cambiar(-1)">❮</button>
+  <img src="https://via.placeholder.com/300x400" class="active">
+  <img src="https://via.placeholder.com/300x400/999">
+  <img src="https://via.placeholder.com/300x400/555">
+  <button class="flecha next" onclick="cambiar(1)">❯</button>
+</div>
+
+<div class="eventos">
+  <div class="evento">
+    <h4>Religioso</h4>
+    <button>Ver ubicación</button>
+  </div>
+  <div class="evento">
+    <h4>Social</h4>
+    <button>Ver ubicación</button>
+  </div>
+</div>
+
+<br><br>
+
+<button onclick="agregarCalendario()">Agregar a calendario</button>
+<button>Confirmar asistencia</button>
+
+</section>
+
+<script>
+
+/* Abrir sobre */
+function abrirInvitacion(){
+  document.getElementById("sobre").classList.add("abrir");
+  setTimeout(()=>{
+    document.getElementById("portada").style.display="none";
+    document.getElementById("invitacion").style.display="block";
+  },1000);
+}
+
+/* Cuenta regresiva */
+const fechaBoda = new Date("May 16, 2026 19:30:00").getTime();
+
+setInterval(()=>{
+  const ahora = new Date().getTime();
+  const diferencia = fechaBoda - ahora;
+
+  const dias = Math.floor(diferencia/(1000*60*60*24));
+  const horas = Math.floor((diferencia%(1000*60*60*24))/(1000*60*60));
+  const minutos = Math.floor((diferencia%(1000*60*60))/(1000*60));
+
+  document.getElementById("countdown").innerHTML = `
+  <div>${dias}d</div>
+  <div>${horas}h</div>
+  <div>${minutos}m</div>`;
+},1000);
+
+/* Slider */
+let index=0;
+const imagenes=document.querySelectorAll(".slider img");
+
+function cambiar(d){
+  imagenes[index].classList.remove("active");
+  index=(index+d+imagenes.length)%imagenes.length;
+  imagenes[index].classList.add("active");
+}
+
+/* Agregar calendario */
+function agregarCalendario(){
+  const inicio="20260516T193000";
+  const fin="20260516T235900";
+  const titulo="Boda Ángel y Saraí";
+  const lugar="Ubicación del evento";
+
+  window.open(`https://calendar.google.com/calendar/render?action=TEMPLATE&text=${titulo}&dates=${inicio}/${fin}&location=${lugar}`);
+}
+
+</script>
+
+</body>
+</html>
