@@ -11,7 +11,7 @@
 
 :root{
   --azul:#0b1c2d;
-  --rosa:#e6b7c8;
+  --azul2:#122c44;
   --rosagold:#e8b4b8;
 }
 
@@ -24,15 +24,14 @@ body{
   overflow-x:hidden;
 }
 
-/* ---------------- SOBRE ---------------- */
+/* ================= SOBRE ================= */
 
 #portada{
   height:100vh;
   display:flex;
   justify-content:center;
   align-items:center;
-  background:linear-gradient(145deg,#0b1c2d,#122c44);
-  transition:1s;
+  background:linear-gradient(145deg,var(--azul),var(--azul2));
 }
 
 .sobre{
@@ -41,8 +40,8 @@ body{
   height:280px;
   background:#10283f;
   position:relative;
-  border-radius:10px;
-  box-shadow:0 15px 40px rgba(0,0,0,0.6);
+  border-radius:12px;
+  box-shadow:0 20px 50px rgba(0,0,0,0.6);
   overflow:hidden;
 }
 
@@ -52,9 +51,13 @@ body{
   width:100%;
   height:100%;
   background:#0e2235;
-  clip-path:polygon(0 0,100% 0,50% 60%);
+  clip-path:polygon(0 0,100% 0,50% 65%);
   transform-origin:top;
   transition:1s;
+}
+
+.abrir .solapa{
+  transform:rotateX(180deg);
 }
 
 /* Contenido */
@@ -67,12 +70,13 @@ body{
   align-items:center;
 }
 
-/* SELLO DE CERA */
+/* ================= SELLO REALISTA ================= */
+
 .sello{
-  width:130px;
-  height:130px;
-  background:radial-gradient(circle at 30% 30%, #f6d4da, #d88fa5);
-  border-radius:50%;
+  width:150px;
+  height:150px;
+  background:radial-gradient(circle at 30% 30%, #f7c6d0, #c96c86 70%);
+  border-radius:45% 55% 60% 40% / 50% 45% 55% 50%;
   display:flex;
   justify-content:center;
   align-items:center;
@@ -80,33 +84,38 @@ body{
   font-size:48px;
   color:white;
   cursor:pointer;
+  position:relative;
   box-shadow:
-    inset -8px -8px 15px rgba(0,0,0,0.3),
+    inset -12px -12px 20px rgba(0,0,0,0.35),
     inset 8px 8px 15px rgba(255,255,255,0.3),
-    0 10px 20px rgba(0,0,0,0.5);
+    0 15px 30px rgba(0,0,0,0.5);
   transition:0.4s;
 }
 
 .sello:hover{
-  transform:scale(1.08);
+  transform:scale(1.05);
 }
 
-/* Animación romper sello */
+.sello::after{
+  content:"";
+  position:absolute;
+  width:110%;
+  height:110%;
+  border-radius:inherit;
+  border:3px solid rgba(255,255,255,0.2);
+}
+
 .sello.romper{
-  animation:romper 0.6s forwards;
+  animation:romper 0.7s forwards;
 }
 
 @keyframes romper{
   0%{transform:scale(1);}
-  50%{transform:scale(0.9);}
-  100%{transform:scale(0); opacity:0;}
+  50%{transform:scale(0.85);}
+  100%{transform:scale(0);opacity:0;}
 }
 
-.abrir .solapa{
-  transform:rotateX(180deg);
-}
-
-/* ---------------- INTERIOR ---------------- */
+/* ================= INTERIOR ================= */
 
 #invitacion{
   display:none;
@@ -116,22 +125,21 @@ body{
 
 .seccion{
   margin:60px 0;
-  position:relative;
 }
 
 .seccion::before{
   content:"✦";
   display:block;
-  font-size:22px;
+  font-size:20px;
   margin-bottom:10px;
-  opacity:0.6;
+  opacity:0.5;
 }
 
-/* Animación Scroll */
+/* Scroll */
 .animar{
   opacity:0;
   transform:translateY(60px);
-  transition:all 1s ease;
+  transition:1s;
 }
 
 .animar.visible{
@@ -142,7 +150,6 @@ body{
 .iniciales{
   font-family:'Great Vibes',cursive;
   font-size:70px;
-  margin-bottom:30px;
 }
 
 /* Calendario */
@@ -186,12 +193,12 @@ h3{
   margin-bottom:10px;
 }
 
-/* Cuenta regresiva */
+/* Countdown */
 #countdown{
   display:flex;
   justify-content:center;
-  gap:15px;
-  margin:20px 0;
+  gap:12px;
+  flex-wrap:wrap;
 }
 
 #countdown div{
@@ -199,17 +206,18 @@ h3{
   padding:15px;
   border-radius:15px;
   min-width:70px;
-  font-size:18px;
 }
 
 /* Eventos */
 .eventos{
   display:flex;
   gap:15px;
+  flex-wrap:wrap;
 }
 
 .evento{
   flex:1;
+  min-width:130px;
   background:rgba(255,255,255,0.05);
   padding:15px;
   border-radius:15px;
@@ -240,6 +248,7 @@ h3{
   border:none;
   padding:8px 12px;
   cursor:pointer;
+  color:white;
 }
 
 .prev{left:0;}
@@ -249,12 +258,12 @@ button{
   background:transparent;
   border:1px solid var(--rosagold);
   color:var(--rosagold);
-  padding:12px 28px;
+  padding:12px 25px;
   margin-top:15px;
   border-radius:30px;
-  font-size:16px;
+  font-size:15px;
   cursor:pointer;
-  transition:0.4s;
+  transition:0.3s;
 }
 
 button:hover{
@@ -266,6 +275,7 @@ button:hover{
 </head>
 <body>
 
+<!-- PORTADA -->
 <section id="portada">
   <div class="sobre" id="sobre">
     <div class="solapa"></div>
@@ -275,6 +285,7 @@ button:hover{
   </div>
 </section>
 
+<!-- INVITACIÓN -->
 <section id="invitacion">
 
 <div class="iniciales seccion animar">A & S</div>
@@ -298,6 +309,40 @@ button:hover{
 Con la bendición de Dios queremos compartir este día contigo.</p>
 </div>
 
+<div class="seccion animar">
+<h3>Nuestra Canción</h3>
+<a href="https://open.spotify.com/" target="_blank">
+<button>Escuchar en Spotify</button>
+</a>
+</div>
+
+<div class="seccion animar">
+<h3>Nuestra Historia</h3>
+<div class="slider">
+<button class="flecha prev" onclick="cambiar(-1)">❮</button>
+<img src="https://via.placeholder.com/300x400" class="active">
+<img src="https://via.placeholder.com/300x400/999">
+<img src="https://via.placeholder.com/300x400/555">
+<button class="flecha next" onclick="cambiar(1)">❯</button>
+</div>
+</div>
+
+<div class="eventos seccion animar">
+<div class="evento">
+<h4>Religioso</h4>
+<button>Ver ubicación</button>
+</div>
+<div class="evento">
+<h4>Social</h4>
+<button>Ver ubicación</button>
+</div>
+</div>
+
+<div class="seccion animar">
+<button onclick="agregarCalendario()">Agregar a calendario</button>
+<button>Confirmar asistencia</button>
+</div>
+
 </section>
 
 <script>
@@ -305,9 +350,7 @@ Con la bendición de Dios queremos compartir este día contigo.</p>
 /* SELLO */
 document.getElementById("sello").addEventListener("click",function(){
   this.classList.add("romper");
-  setTimeout(()=>{
-    document.getElementById("sobre").classList.add("abrir");
-  },500);
+  setTimeout(()=>{ document.getElementById("sobre").classList.add("abrir"); },500);
   setTimeout(()=>{
     document.getElementById("portada").style.display="none";
     document.getElementById("invitacion").style.display="block";
@@ -316,38 +359,48 @@ document.getElementById("sello").addEventListener("click",function(){
 
 /* COUNTDOWN */
 const fechaBoda = new Date("May 16, 2026 19:30:00").getTime();
-
 setInterval(()=>{
   const ahora = new Date().getTime();
-  const diferencia = fechaBoda - ahora;
+  const d = fechaBoda - ahora;
 
-  const dias = Math.floor(diferencia/(1000*60*60*24));
-  const horas = Math.floor((diferencia%(1000*60*60*24))/(1000*60*60));
-  const minutos = Math.floor((diferencia%(1000*60*60))/(1000*60));
-  const segundos = Math.floor((diferencia%(1000*60))/1000);
+  const dias = Math.floor(d/(1000*60*60*24));
+  const horas = Math.floor((d%(1000*60*60*24))/(1000*60*60));
+  const minutos = Math.floor((d%(1000*60*60))/(1000*60));
+  const segundos = Math.floor((d%(1000*60))/1000);
 
-  document.getElementById("countdown").innerHTML = `
-  <div>${dias}d</div>
-  <div>${horas}h</div>
-  <div>${minutos}m</div>
-  <div>${segundos}s</div>`;
+  document.getElementById("countdown").innerHTML=
+  `<div>${dias}d</div>
+   <div>${horas}h</div>
+   <div>${minutos}m</div>
+   <div>${segundos}s</div>`;
 },1000);
 
-/* Scroll animación */
-const elementos = document.querySelectorAll(".animar");
+/* SLIDER */
+let index=0;
+const imagenes=document.querySelectorAll(".slider img");
+function cambiar(d){
+  imagenes[index].classList.remove("active");
+  index=(index+d+imagenes.length)%imagenes.length;
+  imagenes[index].classList.add("active");
+}
 
+/* CALENDARIO */
+function agregarCalendario(){
+  window.open("https://calendar.google.com/calendar/render?action=TEMPLATE&text=Boda Ángel y Saraí&dates=20260516T193000/20260516T235900");
+}
+
+/* SCROLL */
+const elementos=document.querySelectorAll(".animar");
 function mostrarAlScroll(){
-  const alturaPantalla = window.innerHeight;
+  const h=window.innerHeight;
   elementos.forEach(el=>{
-    const distancia = el.getBoundingClientRect().top;
-    if(distancia < alturaPantalla - 100){
+    if(el.getBoundingClientRect().top < h-100){
       el.classList.add("visible");
     }
   });
 }
-
-window.addEventListener("scroll", mostrarAlScroll);
-window.addEventListener("load", mostrarAlScroll);
+window.addEventListener("scroll",mostrarAlScroll);
+window.addEventListener("load",mostrarAlScroll);
 
 </script>
 
