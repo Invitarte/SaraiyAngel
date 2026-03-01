@@ -3,411 +3,314 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Invitación A&S</title>
+<title>Invitación Angel & Saraí</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
 
 <style>
-
-:root{
-  --azul:#0b1c2d;
-  --azul2:#122c44;
-  --rosagold:#e8b4b8;
-}
-
-*{margin:0;padding:0;box-sizing:border-box;}
-
 body{
-  background:var(--azul);
-  font-family:'Poppins',sans-serif;
-  color:var(--rosagold);
-  overflow-x:hidden;
+margin:0;
+font-family:'Poppins',sans-serif;
+background:#fdfaf6;
+overflow-x:hidden;
+scroll-behavior:smooth;
 }
 
-/* ================= SOBRE ================= */
-
-#portada{
-  height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  background:linear-gradient(145deg,var(--azul),var(--azul2));
+/* ===== SOBRE INICIAL ===== */
+#sobre{
+background:#1e2a78;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+position:relative;
+cursor:pointer;
+transition:1s;
 }
-
-.sobre{
-  width:90%;
-  max-width:420px;
-  height:280px;
-  background:#10283f;
-  position:relative;
-  border-radius:12px;
-  box-shadow:0 20px 50px rgba(0,0,0,0.6);
-  overflow:hidden;
-}
-
-/* Solapa */
-.solapa{
-  position:absolute;
-  width:100%;
-  height:100%;
-  background:#0e2235;
-  clip-path:polygon(0 0,100% 0,50% 65%);
-  transform-origin:top;
-  transition:1s;
-}
-
-.abrir .solapa{
-  transform:rotateX(180deg);
-}
-
-/* Contenido */
-.contenido-sobre{
-  position:absolute;
-  width:100%;
-  height:100%;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-}
-
-/* ================= SELLO REALISTA ================= */
 
 .sello{
-  width:150px;
-  height:150px;
-  background:radial-gradient(circle at 30% 30%, #f7c6d0, #c96c86 70%);
-  border-radius:45% 55% 60% 40% / 50% 45% 55% 50%;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  font-family:'Great Vibes',cursive;
-  font-size:48px;
-  color:white;
-  cursor:pointer;
-  position:relative;
-  box-shadow:
-    inset -12px -12px 20px rgba(0,0,0,0.35),
-    inset 8px 8px 15px rgba(255,255,255,0.3),
-    0 15px 30px rgba(0,0,0,0.5);
-  transition:0.4s;
+width:180px;
+height:180px;
+background:radial-gradient(circle at 30% 30%, #fff8f0, #e8dccf 60%, #d8c7b5);
+border-radius:50%;
+box-shadow:inset 0 0 20px rgba(0,0,0,.2),
+0 10px 25px rgba(0,0,0,.3);
+display:flex;
+align-items:center;
+justify-content:center;
+font-family:'Great Vibes',cursive;
+font-size:60px;
+color:#d68bb1;
+animation:latido 2s infinite;
 }
 
-.sello:hover{
-  transform:scale(1.05);
+@keyframes latido{
+0%{transform:scale(1);}
+50%{transform:scale(1.05);}
+100%{transform:scale(1);}
 }
 
-.sello::after{
-  content:"";
-  position:absolute;
-  width:110%;
-  height:110%;
-  border-radius:inherit;
-  border:3px solid rgba(255,255,255,0.2);
+/* ===== CONTENIDO ===== */
+#contenido{
+display:none;
+padding:40px 20px;
+animation:fadeIn 1.5s ease forwards;
 }
 
-.sello.romper{
-  animation:romper 0.7s forwards;
-}
-
-@keyframes romper{
-  0%{transform:scale(1);}
-  50%{transform:scale(0.85);}
-  100%{transform:scale(0);opacity:0;}
-}
-
-/* ================= INTERIOR ================= */
-
-#invitacion{
-  display:none;
-  padding:40px 20px;
-  text-align:center;
+@keyframes fadeIn{
+from{opacity:0; transform:translateY(40px);}
+to{opacity:1; transform:translateY(0);}
 }
 
 .seccion{
-  margin:60px 0;
+margin:60px 0;
+text-align:center;
+opacity:0;
+transform:translateY(40px);
+transition:1s;
 }
 
-.seccion::before{
-  content:"✦";
-  display:block;
-  font-size:20px;
-  margin-bottom:10px;
-  opacity:0.5;
+.seccion.visible{
+opacity:1;
+transform:translateY(0);
 }
 
-/* Scroll */
-.animar{
-  opacity:0;
-  transform:translateY(60px);
-  transition:1s;
+.seccion h2{
+font-family:'Great Vibes',cursive;
+font-size:45px;
+color:#1e2a78;
+margin-bottom:20px;
 }
 
-.animar.visible{
-  opacity:1;
-  transform:translateY(0);
+.decoracion{
+font-size:25px;
+color:#d68bb1;
+margin-bottom:10px;
 }
 
-.iniciales{
-  font-family:'Great Vibes',cursive;
-  font-size:70px;
-}
-
-/* Calendario */
+/* ===== CALENDARIO ===== */
 .calendario{
-  max-width:350px;
-  margin:auto;
+display:grid;
+grid-template-columns:repeat(7,1fr);
+max-width:400px;
+margin:0 auto;
+gap:5px;
 }
 
-.grid{
-  display:grid;
-  grid-template-columns:repeat(7,1fr);
-  gap:5px;
+.dia{
+padding:10px;
+border:1px solid #ddd;
 }
 
-.grid div{
-  padding:10px 0;
-  border:1px solid rgba(255,255,255,0.1);
-  font-size:14px;
+.destacado{
+border:2px solid #d68bb1;
+border-radius:50%;
 }
 
-.heart{
-  position:relative;
-  font-weight:bold;
+/* ===== CONTADOR ===== */
+.contador{
+display:flex;
+justify-content:center;
+gap:20px;
+font-size:20px;
+flex-wrap:wrap;
 }
 
-.heart::before{
-  content:"❤";
-  position:absolute;
-  font-size:32px;
-  color:var(--rosagold);
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  z-index:-1;
+.caja{
+background:#1e2a78;
+color:white;
+padding:15px;
+border-radius:15px;
+min-width:80px;
 }
 
-/* Títulos */
-h3{
-  font-family:'Great Vibes',cursive;
-  font-size:42px;
-  margin-bottom:10px;
+/* ===== GALERÍA ===== */
+.galeria{
+display:flex;
+justify-content:center;
+gap:15px;
+flex-wrap:wrap;
 }
 
-/* Countdown */
-#countdown{
-  display:flex;
-  justify-content:center;
-  gap:12px;
-  flex-wrap:wrap;
+.galeria img{
+width:200px;
+height:250px;
+object-fit:cover;
+border-radius:15px;
+transition:.5s;
 }
 
-#countdown div{
-  background:rgba(255,255,255,0.05);
-  padding:15px;
-  border-radius:15px;
-  min-width:70px;
+.galeria img:hover{
+transform:scale(1.05);
 }
 
-/* Eventos */
+/* ===== EVENTOS ===== */
 .eventos{
-  display:flex;
-  gap:15px;
-  flex-wrap:wrap;
+display:flex;
+justify-content:center;
+gap:30px;
+flex-wrap:wrap;
 }
 
 .evento{
-  flex:1;
-  min-width:130px;
-  background:rgba(255,255,255,0.05);
-  padding:15px;
-  border-radius:15px;
+background:white;
+padding:20px;
+border-radius:15px;
+box-shadow:0 5px 15px rgba(0,0,0,.1);
+width:250px;
+transition:.5s;
 }
 
-/* Slider */
-.slider{
-  position:relative;
-  max-width:320px;
-  margin:auto;
+.evento:hover{
+transform:translateY(-8px);
 }
 
-.slider img{
-  width:100%;
-  border-radius:20px;
-  display:none;
-}
-
-.slider img.active{
-  display:block;
-}
-
-.flecha{
-  position:absolute;
-  top:50%;
-  transform:translateY(-50%);
-  background:rgba(0,0,0,0.5);
-  border:none;
-  padding:8px 12px;
-  cursor:pointer;
-  color:white;
-}
-
-.prev{left:0;}
-.next{right:0;}
-
+/* BOTONES */
 button{
-  background:transparent;
-  border:1px solid var(--rosagold);
-  color:var(--rosagold);
-  padding:12px 25px;
-  margin-top:15px;
-  border-radius:30px;
-  font-size:15px;
-  cursor:pointer;
-  transition:0.3s;
-}
-
-button:hover{
-  background:var(--rosagold);
-  color:var(--azul);
+padding:10px 20px;
+background:#d68bb1;
+border:none;
+color:white;
+border-radius:20px;
+cursor:pointer;
+margin-top:10px;
 }
 
 </style>
 </head>
+
 <body>
 
-<!-- PORTADA -->
-<section id="portada">
-  <div class="sobre" id="sobre">
-    <div class="solapa"></div>
-    <div class="contenido-sobre">
-      <div class="sello" id="sello">A & S</div>
-    </div>
-  </div>
-</section>
-
-<!-- INVITACIÓN -->
-<section id="invitacion">
-
-<div class="seccion animar">
-<h3>Nuestra Boda </h3>
-  <h2>Ángel y Saraí</h2>
-<p>El amor es la razón de este día, y tu presencia lo hará aún más especial.<br>
-Con la bendición de Dios queremos compartir este día contigo.</p>
+<!-- SOBRE -->
+<div id="sobre">
+<div class="sello">AyS</div>
+<p style="color:white;margin-top:20px;">Haz clic para abrir</p>
 </div>
 
-<div class="calendario seccion animar">
-<h3>Mayo 2026</h3>
-<div class="grid">
-<div>L</div><div>M</div><div>M</div><div>J</div><div>V</div><div>S</div><div>D</div>
-<div></div><div></div><div></div><div></div><div>1</div><div>2</div><div>3</div>
-<div>4</div><div>5</div><div>6</div><div>7</div><div>8</div><div>9</div><div>10</div>
-<div>11</div><div>12</div><div>13</div><div>14</div><div>15</div><div class="heart">16</div><div>17</div>
-<div>18</div><div>19</div><div>20</div><div>21</div><div>22</div><div>23</div><div>24</div>
-<div>25</div><div>26</div><div>27</div><div>28</div><div>29</div><div>30</div><div>31</div>
-</div>
+<!-- CONTENIDO -->
+<div id="contenido">
+
+<div class="seccion">
+<div class="decoracion">✿</div>
+<h2>Angel & Saraí</h2>
+<p>¡Nos Casamos!</p>
 </div>
 
-<div id="countdown"></div>
+<div class="seccion">
+<div class="decoracion">❀</div>
+<h2>16 de Mayo 2026</h2>
 
-<div class="seccion animar">
-<h3>Nuestra Canción</h3>
-<a href="https://open.spotify.com/" target="_blank">
-<button>Escuchar en Spotify</button>
-</a>
-</div>
-
-<div class="seccion animar">
-<h3>Nuestra Historia</h3>
-<div class="slider">
-<button class="flecha prev" onclick="cambiar(-1)">❮</button>
-<img src="https://via.placeholder.com/300x400" class="active">
-<img src="https://via.placeholder.com/300x400/999">
-<img src="https://via.placeholder.com/300x400/555">
-<button class="flecha next" onclick="cambiar(1)">❯</button>
+<div class="calendario">
+<div class="dia"></div><div class="dia"></div><div class="dia"></div>
+<div class="dia"></div><div class="dia">1</div><div class="dia">2</div><div class="dia">3</div>
+<div class="dia">4</div><div class="dia">5</div><div class="dia">6</div>
+<div class="dia">7</div><div class="dia">8</div><div class="dia">9</div><div class="dia">10</div>
+<div class="dia">11</div><div class="dia">12</div><div class="dia">13</div>
+<div class="dia">14</div><div class="dia">15</div>
+<div class="dia destacado">16</div>
+<div class="dia">17</div><div class="dia">18</div>
 </div>
 </div>
 
-<div class="eventos seccion animar">
-  <h3>Eventos</h3>
-  <div class="evento">
-<h4>Religioso</h4>
-<h5>Parroquía de Santa Inés</h5>
-<h5>7:30 P.M.</h5>
-<a href="https://maps.app.goo.gl/iVMQXGrr3qQKEQvJA">
-<button>Ver ubicación</button>
+<div class="seccion">
+<div class="decoracion">♥</div>
+<h2>Cuenta Regresiva</h2>
+<div class="contador" id="contador"></div>
 </div>
+
+<div class="seccion">
+<div class="decoracion">♫</div>
+<h2>Nuestra Canción</h2>
+<audio controls>
+<source src="cancion.mp3" type="audio/mpeg">
+</audio>
+</div>
+
+<div class="seccion">
+<div class="decoracion">📸</div>
+<h2>Nuestras Fotos</h2>
+<div class="galeria">
+<img src="foto1.jpg">
+<img src="foto2.jpg">
+<img src="foto3.jpg">
+</div>
+</div>
+
+<div class="seccion">
+<div class="decoracion">❦</div>
+<h2>Eventos</h2>
+
+<div class="eventos">
+
 <div class="evento">
-<h4>Social</h4>
-<h5>Local Buenos aires</h5>
-<h5>9:30 P.M.</h5>
-<a href="https://maps.app.goo.gl/iPX9DEjqSmvVpjQSA">
-<button>Ver ubicación</button>
+<h3>Ceremonia</h3>
+<p>3:00 PM</p>
+<p>Templo Principal</p>
+<a href="https://maps.google.com" target="_blank">Ver ubicación</a>
 </div>
 
-
-<div class="seccion animar">
-<button onclick="agregarCalendario()">Agregar a calendario</button>
-<button>Confirmar asistencia</button>
+<div class="evento">
+<h3>Recepción</h3>
+<p>6:00 PM</p>
+<p>Salón Jardín Real</p>
+<a href="https://maps.google.com" target="_blank">Ver ubicación</a>
 </div>
 
-</section>
+</div>
+
+<button onclick="agregarCalendario()">Agregar a Calendario</button>
+
+</div>
+
+</div>
 
 <script>
 
-/* SELLO */
-document.getElementById("sello").addEventListener("click",function(){
-  this.classList.add("romper");
-  setTimeout(()=>{ document.getElementById("sobre").classList.add("abrir"); },500);
-  setTimeout(()=>{
-    document.getElementById("portada").style.display="none";
-    document.getElementById("invitacion").style.display="block";
-  },1300);
+/* ABRIR SOBRE */
+document.getElementById("sobre").addEventListener("click",()=>{
+document.getElementById("sobre").style.display="none";
+document.getElementById("contenido").style.display="block";
 });
 
-/* COUNTDOWN */
-const fechaBoda = new Date("May 16, 2026 19:30:00").getTime();
+/* CONTADOR */
+const fechaBoda = new Date("May 16, 2026 15:00:00").getTime();
+
 setInterval(()=>{
-  const ahora = new Date().getTime();
-  const d = fechaBoda - ahora;
+const ahora = new Date().getTime();
+const distancia = fechaBoda - ahora;
 
-  const dias = Math.floor(d/(1000*60*60*24));
-  const horas = Math.floor((d%(1000*60*60*24))/(1000*60*60));
-  const minutos = Math.floor((d%(1000*60*60))/(1000*60));
-  const segundos = Math.floor((d%(1000*60))/1000);
+const dias = Math.floor(distancia/(1000*60*60*24));
+const horas = Math.floor((distancia%(1000*60*60*24))/(1000*60*60));
+const minutos = Math.floor((distancia%(1000*60*60))/(1000*60));
+const segundos = Math.floor((distancia%(1000*60))/1000);
 
-  document.getElementById("countdown").innerHTML=
-  `<div>${dias}d</div>
-   <div>${horas}h</div>
-   <div>${minutos}m</div>
-   <div>${segundos}s</div>`;
+document.getElementById("contador").innerHTML=`
+<div class="caja">${dias}<br>Días</div>
+<div class="caja">${horas}<br>Horas</div>
+<div class="caja">${minutos}<br>Min</div>
+<div class="caja">${segundos}<br>Seg</div>
+`;
 },1000);
 
-/* SLIDER */
-let index=0;
-const imagenes=document.querySelectorAll(".slider img");
-function cambiar(d){
-  imagenes[index].classList.remove("active");
-  index=(index+d+imagenes.length)%imagenes.length;
-  imagenes[index].classList.add("active");
-}
+/* SCROLL ANIMATION */
+const secciones = document.querySelectorAll('.seccion');
 
-/* CALENDARIO */
+window.addEventListener('scroll',()=>{
+const trigger = window.innerHeight * 0.8;
+
+secciones.forEach(sec=>{
+const top = sec.getBoundingClientRect().top;
+if(top < trigger){
+sec.classList.add('visible');
+}
+});
+});
+
+/* AGREGAR A CALENDARIO */
 function agregarCalendario(){
-  window.open("https://calendar.google.com/calendar/render?action=TEMPLATE&text=Boda Ángel y Saraí&dates=20260516T193000/20260516T235900");
+window.open("https://calendar.google.com/calendar/render?action=TEMPLATE&text=Boda+Angel+y+Sarai&dates=20260516T150000/20260516T220000&details=Nuestra+Boda&location=Templo+Principal");
 }
-
-/* SCROLL */
-const elementos=document.querySelectorAll(".animar");
-function mostrarAlScroll(){
-  const h=window.innerHeight;
-  elementos.forEach(el=>{
-    if(el.getBoundingClientRect().top < h-100){
-      el.classList.add("visible");
-    }
-  });
-}
-window.addEventListener("scroll",mostrarAlScroll);
-window.addEventListener("load",mostrarAlScroll);
 
 </script>
 
