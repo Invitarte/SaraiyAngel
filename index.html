@@ -15,7 +15,95 @@ background:#fdfaf6;
 overflow-x:hidden;
 scroll-behavior:smooth;
 }
+:root{
+  --azul:#0b1c2d;
+  --rosa:#e6b7c8;
+  --rosagold:#e8b4b8;
+}
 
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+  background:var(--azul);
+  font-family:'Poppins',sans-serif;
+  color:var(--rosagold);
+  overflow-x:hidden;
+}
+
+/* ---------------- SOBRE ---------------- */
+
+#portada{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:linear-gradient(145deg,#0b1c2d,#122c44);
+  transition:1s;
+}
+
+.sobre{
+  width:90%;
+  max-width:420px;
+  height:280px;
+  background:#10283f;
+  position:relative;
+  border-radius:10px;
+  box-shadow:0 15px 40px rgba(0,0,0,0.6);
+  overflow:hidden;
+}
+
+.solapa{
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:#0e2235;
+  clip-path:polygon(0 0,100% 0,50% 60%);
+  transform-origin:top;
+  transition:1s;
+}
+
+.contenido-sobre{
+  position:absolute;
+  width:100%;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:20px;
+}
+
+.contenido-sobre h1{
+  font-family:'Great Vibes',cursive;
+  font-size:42px;
+}
+
+.contenido-sobre p{
+  font-size:14px;
+  margin:10px 0;
+}
+
+button{
+  background:transparent;
+  border:1px solid var(--rosagold);
+  color:var(--rosagold);
+  padding:12px 28px;
+  margin-top:15px;
+  border-radius:30px;
+  font-size:16px;
+  cursor:pointer;
+  transition:0.4s;
+}
+
+button:hover{
+  background:var(--rosagold);
+  color:var(--azul);
+}
+
+.abrir .solapa{
+  transform:rotateX(180deg);
+}
 /* ===== SOBRE INICIAL ===== */
 #sobre{
 background:#1e2a78;
