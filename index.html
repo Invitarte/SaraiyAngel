@@ -24,6 +24,17 @@ body{
   color:var(--rosagold);
   overflow-x:hidden;
 }
+  /* Animación scroll */
+.animar{
+  opacity:0;
+  transform:translateY(60px);
+  transition:all 1s ease;
+}
+
+.animar.visible{
+  opacity:1;
+  transform:translateY(0);
+}
 
 /* ---------------- SOBRE INICIAL ---------------- */
 
@@ -284,8 +295,8 @@ Con la bendición de Dios queremos compartir este día contigo.</p>
 </div>
 
 <div class="eventos">
+  <h3 style="Text-aling:center;">Eventos</h3>
   <div class="evento">
-    <h3>Eventos</h3>
     <h4>Religioso</h4>
     <button>Ver ubicación</button>
   </div>
@@ -339,6 +350,23 @@ function cambiar(d){
   index=(index+d+imagenes.length)%imagenes.length;
   imagenes[index].classList.add("active");
 }
+  // Detectar elementos al hacer scroll
+const elementos = document.querySelectorAll(".animar");
+
+function mostrarAlScroll(){
+  const alturaPantalla = window.innerHeight;
+
+  elementos.forEach(el => {
+    const distancia = el.getBoundingClientRect().top;
+
+    if(distancia < alturaPantalla - 100){
+      el.classList.add("visible");
+    }
+  });
+}
+
+window.addEventListener("scroll", mostrarAlScroll);
+window.addEventListener("load", mostrarAlScroll);
 
 /* Agregar calendario */
 function agregarCalendario(){
