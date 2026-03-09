@@ -1,4 +1,4 @@
-```html
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -16,6 +16,7 @@
 :root{
 --azul:#0b2f3a;
 --rose:#e6b7a9;
+--roseSuave:#f7d8cf;
 --blanco:#ffffff;
 }
 
@@ -43,21 +44,20 @@ z-index:9999;
 .sobre{
 width:420px;
 height:600px;
-position:relative;
 display:flex;
-box-shadow:0 30px 70px rgba(0,0,0,0.5);
+position:relative;
+perspective:1000px;
 }
 
 .lado{
 width:50%;
 height:100%;
-background:#f2e9df;
-position:relative;
+background:var(--azul);
+border:1px solid rgba(255,255,255,0.1);
 transition:1.2s;
 }
 
 .izq{
-border-right:1px solid #ddd;
 transform-origin:left;
 }
 
@@ -80,33 +80,32 @@ position:absolute;
 top:50%;
 left:50%;
 transform:translate(-50%,-50%);
-width:90px;
-height:90px;
+width:95px;
+height:95px;
 border-radius:50%;
-background:radial-gradient(circle,#cfa07f,#9b6a4e);
+background:radial-gradient(circle,#d9a78f,#a46b55);
 display:flex;
 align-items:center;
 justify-content:center;
 font-family:'Great Vibes',cursive;
-font-size:40px;
+font-size:42px;
 color:white;
 cursor:pointer;
 z-index:10;
-box-shadow:0 10px 25px rgba(0,0,0,0.4);
+box-shadow:0 10px 25px rgba(0,0,0,0.5);
 }
 
 /* CALENDARIO */
 
 .calendario{
 position:absolute;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
-background:white;
-padding:15px;
-border-radius:6px;
-font-size:14px;
+bottom:30px;
+left:30px;
+background:var(--roseSuave);
+padding:18px;
+border-radius:8px;
 color:#333;
+font-size:14px;
 }
 
 .calendario table{
@@ -115,16 +114,17 @@ text-align:center;
 }
 
 .calendario td{
-padding:5px;
-width:25px;
+padding:4px;
+width:26px;
 }
 
 .dia{
-border:2px solid red;
+border:2px solid #b94a48;
 border-radius:50%;
+font-weight:bold;
 }
 
-/* ANIMACIÓN SALIDA */
+/* ANIMACION SALIDA */
 
 .ocultar{
 animation:salida 1s forwards;
@@ -146,12 +146,33 @@ display:none;
 /* SECCIONES */
 
 section{
-padding:100px 20px;
+padding:110px 20px;
 text-align:center;
 opacity:0;
-transform:translateY(50px);
+transform:translateY(60px);
 transition:1s;
 border-bottom:1px solid rgba(255,255,255,0.1);
+position:relative;
+}
+
+/* FLORES DECORATIVAS */
+
+section::before{
+content:"🌸";
+position:absolute;
+left:10%;
+top:20%;
+font-size:30px;
+opacity:0.2;
+}
+
+section::after{
+content:"🌸";
+position:absolute;
+right:10%;
+bottom:20%;
+font-size:30px;
+opacity:0.2;
 }
 
 section.visible{
@@ -169,14 +190,20 @@ h2{
 font-size:40px;
 }
 
-/* CONTADOR */
+/* CUENTA REGRESIVA */
 
-#contador{
-font-size:30px;
-margin-top:20px;
+.contadorSection{
+background:rgba(255,255,255,0.05);
 }
 
-/* GALERÍA */
+#contador{
+font-size:36px;
+margin-top:25px;
+font-weight:bold;
+color:#ffd7c9;
+}
+
+/* GALERIA */
 
 .galeria{
 display:grid;
@@ -189,7 +216,7 @@ padding:0 20px;
 .foto{
 height:220px;
 background:#ddd;
-border-radius:10px;
+border-radius:12px;
 }
 
 /* EVENTOS */
@@ -204,17 +231,17 @@ margin-top:40px;
 
 .evento{
 background:rgba(255,255,255,0.05);
-padding:30px;
-border-radius:12px;
+padding:35px;
+border-radius:14px;
 width:280px;
 }
 
-/* BOTÓN UBICACIÓN */
+/* BOTON UBICACION */
 
 .ubicacion{
 margin-top:15px;
 display:inline-block;
-padding:10px 20px;
+padding:12px 24px;
 background:var(--rose);
 color:var(--azul);
 text-decoration:none;
@@ -225,9 +252,9 @@ font-weight:bold;
 /* BOTON CALENDARIO */
 
 .boton{
-margin-top:25px;
+margin-top:30px;
 display:inline-block;
-padding:12px 26px;
+padding:14px 28px;
 background:var(--rose);
 color:var(--azul);
 border-radius:30px;
@@ -304,10 +331,15 @@ font-weight:bold;
 
 <h2>Ángel & Saraí</h2>
 
+</section>
+
+<section class="contadorSection">
+
+<h2>Cuenta regresiva</h2>
+
 <div id="contador"></div>
 
 </section>
-
 
 <section>
 
@@ -318,7 +350,6 @@ font-weight:bold;
 </audio>
 
 </section>
-
 
 <section>
 
@@ -334,7 +365,6 @@ font-weight:bold;
 
 </section>
 
-
 <section>
 
 <h2>Eventos</h2>
@@ -348,11 +378,8 @@ font-weight:bold;
 <p>16 mayo 2026</p>
 <p>07:30 p.m</p>
 
-<a class="ubicacion" target="_blank"
-href="https://maps.google.com">
-
+<a class="ubicacion" target="_blank" href="https://maps.google.com">
 Ver ubicación
-
 </a>
 
 </div>
@@ -363,11 +390,8 @@ Ver ubicación
 
 <p>09:00 p.m</p>
 
-<a class="ubicacion" target="_blank"
-href="https://maps.google.com">
-
+<a class="ubicacion" target="_blank" href="https://maps.google.com">
 Ver ubicación
-
 </a>
 
 </div>
@@ -375,7 +399,6 @@ Ver ubicación
 </div>
 
 </section>
-
 
 <section>
 
@@ -392,7 +415,6 @@ Agregar a Google Calendar
 
 </div>
 
-
 <script>
 
 /* ABRIR SOBRE */
@@ -400,25 +422,21 @@ Agregar a Google Calendar
 function abrirSobre(){
 
 document.getElementById("sobre").classList.add("abrir")
-
 document.querySelector(".sello").style.display="none"
 
 setTimeout(()=>{
-
 document.getElementById("sobreContainer").classList.add("ocultar")
 
 setTimeout(()=>{
-
 document.getElementById("sobreContainer").style.display="none"
 document.getElementById("contenido").style.display="block"
-
 },900)
 
 },1200)
 
 }
 
-/* CONTADOR CON SEGUNDOS */
+/* CUENTA REGRESIVA */
 
 const fechaBoda=new Date("May 16, 2026 19:30:00").getTime()
 
@@ -429,11 +447,8 @@ const ahora=new Date().getTime()
 const diferencia=fechaBoda-ahora
 
 const dias=Math.floor(diferencia/(1000*60*60*24))
-
 const horas=Math.floor((diferencia%(1000*60*60*24))/(1000*60*60))
-
 const minutos=Math.floor((diferencia%(1000*60*60))/(1000*60))
-
 const segundos=Math.floor((diferencia%(1000*60))/1000)
 
 document.getElementById("contador").innerHTML=
@@ -449,24 +464,26 @@ segundos+" segundos"
 
 const secciones=document.querySelectorAll("section")
 
-window.addEventListener("scroll",()=>{
+function animarScroll(){
 
 secciones.forEach(sec=>{
 
-const posicion=sec.getBoundingClientRect().top
+const top=sec.getBoundingClientRect().top
+const visible=window.innerHeight-100
 
-if(posicion < window.innerHeight-100){
-
+if(top < visible){
 sec.classList.add("visible")
-
 }
 
 })
 
-})
+}
+
+window.addEventListener("scroll",animarScroll)
+window.addEventListener("load",animarScroll)
 
 </script>
 
 </body>
 </html>
-```
+
