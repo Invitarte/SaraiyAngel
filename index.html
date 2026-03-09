@@ -43,6 +43,8 @@ height:600px;
 display:flex;
 position:relative;
 perspective:1000px;
+border:4px solid #f6a5b8; /* borde rosa elegante */
+border-radius:8px;
 }
 
 .lado{
@@ -50,6 +52,7 @@ width:50%;
 height:100%;
 background:#0b2f3a;
 transition:1.2s;
+position:relative;
 }
 
 .izq{transform-origin:left;}
@@ -83,10 +86,11 @@ box-shadow:0 10px 25px rgba(0,0,0,0.5);
 
 .calendario{
 position:absolute;
-bottom:35px;
-left:35px;
+bottom:25px;
+left:0;
+width:50%; /* mitad del lado izquierdo */
 background:#ffd9e2;
-padding:8px;
+padding:10px;
 border-radius:6px;
 font-size:11px;
 }
@@ -94,11 +98,11 @@ font-size:11px;
 .calendario table{
 border-collapse:collapse;
 text-align:center;
+width:100%;
 }
 
 .calendario td{
 padding:3px;
-width:18px;
 }
 
 .dia{
@@ -167,9 +171,27 @@ margin:auto;
 }
 
 #contador{
-font-size:36px;
-margin-top:20px;
+display:flex;
+justify-content:center;
+gap:15px;
+margin-top:25px;
+flex-wrap:wrap;
+}
+
+.tiempo{
+background:rgba(255,255,255,0.08);
+padding:20px;
+border-radius:10px;
+min-width:80px;
+}
+
+.numero{
+font-size:32px;
 font-weight:bold;
+}
+
+.label{
+font-size:14px;
 }
 
 /* GALERIA */
@@ -238,22 +260,8 @@ width:300px;
 height:420px;
 }
 
-.calendario{
-bottom:20px;
-left:20px;
-font-size:10px;
-}
-
 h1,h2{
 font-size:42px;
-}
-
-section{
-padding:90px 20px;
-}
-
-#contador{
-font-size:28px;
 }
 
 }
@@ -291,6 +299,14 @@ font-size:28px;
 <td>17</td>
 </tr>
 
+<tr>
+<td>18</td><td>19</td><td>20</td><td>21</td><td>22</td><td>23</td><td>24</td>
+</tr>
+
+<tr>
+<td>25</td><td>26</td><td>27</td><td>28</td><td>29</td><td>30</td><td>31</td>
+</tr>
+
 </table>
 
 </div>
@@ -325,7 +341,29 @@ font-size:28px;
 
 <h2>Cuenta regresiva</h2>
 
-<div id="contador"></div>
+<div id="contador">
+
+<div class="tiempo">
+<div class="numero" id="dias">0</div>
+<div class="label">Días</div>
+</div>
+
+<div class="tiempo">
+<div class="numero" id="horas">0</div>
+<div class="label">Horas</div>
+</div>
+
+<div class="tiempo">
+<div class="numero" id="minutos">0</div>
+<div class="label">Minutos</div>
+</div>
+
+<div class="tiempo">
+<div class="numero" id="segundos">0</div>
+<div class="label">Segundos</div>
+</div>
+
+</div>
 
 </div>
 
@@ -442,12 +480,10 @@ const horas=Math.floor((diff%(1000*60*60*24))/(1000*60*60))
 const minutos=Math.floor((diff%(1000*60*60))/(1000*60))
 const segundos=Math.floor((diff%(1000*60))/1000)
 
-document.getElementById("contador").innerHTML=
-
-dias+" días "+
-horas+" horas "+
-minutos+" minutos "+
-segundos+" segundos"
+document.getElementById("dias").innerText=dias
+document.getElementById("horas").innerText=horas
+document.getElementById("minutos").innerText=minutos
+document.getElementById("segundos").innerText=segundos
 
 },1000)
 
