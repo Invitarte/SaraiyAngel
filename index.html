@@ -11,20 +11,17 @@
 
 <style>
 
-/* COLORES */
-
 :root{
 --azul:#0b2f3a;
---rose:#e6b7a9;
---roseSuave:#f7d8cf;
---blanco:#ffffff;
+--rosa:#f6d6df;
+--roseGold:#e6b7a9;
 }
 
 body{
 margin:0;
-background:var(--azul);
 font-family:'Playfair Display',serif;
-color:var(--rose);
+background:var(--rosa);
+transition:1s;
 overflow-x:hidden;
 }
 
@@ -34,10 +31,10 @@ overflow-x:hidden;
 position:fixed;
 width:100%;
 height:100vh;
-background:var(--azul);
 display:flex;
 justify-content:center;
 align-items:center;
+background:var(--rosa);
 z-index:9999;
 }
 
@@ -52,26 +49,15 @@ perspective:1000px;
 .lado{
 width:50%;
 height:100%;
-background:var(--azul);
-border:1px solid rgba(255,255,255,0.1);
+background:#0b2f3a;
 transition:1.2s;
 }
 
-.izq{
-transform-origin:left;
-}
+.izq{transform-origin:left;}
+.der{transform-origin:right;}
 
-.der{
-transform-origin:right;
-}
-
-.abrir .izq{
-transform:rotateY(-100deg);
-}
-
-.abrir .der{
-transform:rotateY(100deg);
-}
+.abrir .izq{transform:rotateY(-110deg);}
+.abrir .der{transform:rotateY(110deg);}
 
 /* SELLO */
 
@@ -91,7 +77,6 @@ font-family:'Great Vibes',cursive;
 font-size:42px;
 color:white;
 cursor:pointer;
-z-index:10;
 box-shadow:0 10px 25px rgba(0,0,0,0.5);
 }
 
@@ -99,13 +84,12 @@ box-shadow:0 10px 25px rgba(0,0,0,0.5);
 
 .calendario{
 position:absolute;
-bottom:30px;
-left:30px;
-background:var(--roseSuave);
-padding:18px;
-border-radius:8px;
-color:#333;
-font-size:14px;
+bottom:35px;
+left:35px;
+background:#ffd9e2;
+padding:12px;
+border-radius:6px;
+font-size:13px;
 }
 
 .calendario table{
@@ -115,64 +99,33 @@ text-align:center;
 
 .calendario td{
 padding:4px;
-width:26px;
+width:22px;
 }
 
 .dia{
-border:2px solid #b94a48;
+border:2px solid #c65c5c;
 border-radius:50%;
-font-weight:bold;
-}
-
-/* ANIMACION SALIDA */
-
-.ocultar{
-animation:salida 1s forwards;
-}
-
-@keyframes salida{
-to{
-opacity:0;
-transform:translateY(-100vh);
-}
 }
 
 /* CONTENIDO */
 
 #contenido{
 display:none;
+background:var(--azul);
+color:var(--roseGold);
+min-height:100vh;
 }
 
 /* SECCIONES */
 
 section{
-padding:110px 20px;
+padding:120px 20px;
 text-align:center;
 opacity:0;
 transform:translateY(60px);
 transition:1s;
-border-bottom:1px solid rgba(255,255,255,0.1);
 position:relative;
-}
-
-/* FLORES DECORATIVAS */
-
-section::before{
-content:"🌸";
-position:absolute;
-left:10%;
-top:20%;
-font-size:30px;
-opacity:0.2;
-}
-
-section::after{
-content:"🌸";
-position:absolute;
-right:10%;
-bottom:20%;
-font-size:30px;
-opacity:0.2;
+border-bottom:1px solid rgba(255,255,255,0.08);
 }
 
 section.visible{
@@ -180,27 +133,44 @@ opacity:1;
 transform:translateY(0);
 }
 
+/* FLORES DECORATIVAS */
+
+.flor1{
+position:absolute;
+left:10%;
+top:30%;
+width:150px;
+opacity:.35;
+}
+
+.flor2{
+position:absolute;
+right:10%;
+bottom:20%;
+width:140px;
+opacity:.35;
+}
+
 h1,h2{
 font-family:'Great Vibes',cursive;
-font-size:55px;
+font-size:60px;
 margin:10px;
 }
 
-h2{
-font-size:40px;
-}
+/* CONTADOR */
 
-/* CUENTA REGRESIVA */
-
-.contadorSection{
+.contadorBox{
 background:rgba(255,255,255,0.05);
+padding:40px;
+border-radius:14px;
+max-width:600px;
+margin:auto;
 }
 
 #contador{
 font-size:36px;
-margin-top:25px;
+margin-top:20px;
 font-weight:bold;
-color:#ffd7c9;
 }
 
 /* GALERIA */
@@ -216,7 +186,7 @@ padding:0 20px;
 .foto{
 height:220px;
 background:#ddd;
-border-radius:12px;
+border-radius:10px;
 }
 
 /* EVENTOS */
@@ -233,16 +203,14 @@ margin-top:40px;
 background:rgba(255,255,255,0.05);
 padding:35px;
 border-radius:14px;
-width:280px;
+width:260px;
 }
-
-/* BOTON UBICACION */
 
 .ubicacion{
 margin-top:15px;
 display:inline-block;
 padding:12px 24px;
-background:var(--rose);
+background:var(--roseGold);
 color:var(--azul);
 text-decoration:none;
 border-radius:6px;
@@ -255,7 +223,7 @@ font-weight:bold;
 margin-top:30px;
 display:inline-block;
 padding:14px 28px;
-background:var(--rose);
+background:var(--roseGold);
 color:var(--azul);
 border-radius:30px;
 text-decoration:none;
@@ -277,13 +245,9 @@ font-weight:bold;
 
 <div class="calendario">
 
-<b>Mayo 2026</b>
+<b>Mayo</b>
 
 <table>
-
-<tr>
-<td>L</td><td>M</td><td>X</td><td>J</td><td>V</td><td>S</td><td>D</td>
-</tr>
 
 <tr>
 <td></td><td></td><td></td><td></td><td>1</td><td>2</td><td>3</td>
@@ -297,14 +261,6 @@ font-weight:bold;
 <td>11</td><td>12</td><td>13</td><td>14</td><td>15</td>
 <td class="dia">16</td>
 <td>17</td>
-</tr>
-
-<tr>
-<td>18</td><td>19</td><td>20</td><td>21</td><td>22</td><td>23</td><td>24</td>
-</tr>
-
-<tr>
-<td>25</td><td>26</td><td>27</td><td>28</td><td>29</td><td>30</td><td>31</td>
 </tr>
 
 </table>
@@ -327,19 +283,27 @@ font-weight:bold;
 
 <section>
 
-<h1>Nuestra boda</h1>
+<img class="flor1" src="flor.png">
+<img class="flor2" src="flor.png">
 
+<h1>Nuestra boda</h1>
 <h2>Ángel & Saraí</h2>
 
 </section>
 
-<section class="contadorSection">
+
+<section>
+
+<div class="contadorBox">
 
 <h2>Cuenta regresiva</h2>
 
 <div id="contador"></div>
 
+</div>
+
 </section>
+
 
 <section>
 
@@ -350,6 +314,7 @@ font-weight:bold;
 </audio>
 
 </section>
+
 
 <section>
 
@@ -365,6 +330,7 @@ font-weight:bold;
 
 </section>
 
+
 <section>
 
 <h2>Eventos</h2>
@@ -379,7 +345,9 @@ font-weight:bold;
 <p>07:30 p.m</p>
 
 <a class="ubicacion" target="_blank" href="https://maps.google.com">
+
 Ver ubicación
+
 </a>
 
 </div>
@@ -391,7 +359,9 @@ Ver ubicación
 <p>09:00 p.m</p>
 
 <a class="ubicacion" target="_blank" href="https://maps.google.com">
+
 Ver ubicación
+
 </a>
 
 </div>
@@ -399,6 +369,7 @@ Ver ubicación
 </div>
 
 </section>
+
 
 <section>
 
@@ -422,21 +393,22 @@ Agregar a Google Calendar
 function abrirSobre(){
 
 document.getElementById("sobre").classList.add("abrir")
+
 document.querySelector(".sello").style.display="none"
 
 setTimeout(()=>{
-document.getElementById("sobreContainer").classList.add("ocultar")
 
-setTimeout(()=>{
 document.getElementById("sobreContainer").style.display="none"
-document.getElementById("contenido").style.display="block"
-},900)
 
-},1200)
+document.body.style.background="#0b2f3a"
+
+document.getElementById("contenido").style.display="block"
+
+},1100)
 
 }
 
-/* CUENTA REGRESIVA */
+/* CONTADOR */
 
 const fechaBoda=new Date("May 16, 2026 19:30:00").getTime()
 
@@ -444,12 +416,12 @@ setInterval(()=>{
 
 const ahora=new Date().getTime()
 
-const diferencia=fechaBoda-ahora
+const diff=fechaBoda-ahora
 
-const dias=Math.floor(diferencia/(1000*60*60*24))
-const horas=Math.floor((diferencia%(1000*60*60*24))/(1000*60*60))
-const minutos=Math.floor((diferencia%(1000*60*60))/(1000*60))
-const segundos=Math.floor((diferencia%(1000*60))/1000)
+const dias=Math.floor(diff/(1000*60*60*24))
+const horas=Math.floor((diff%(1000*60*60*24))/(1000*60*60))
+const minutos=Math.floor((diff%(1000*60*60))/(1000*60))
+const segundos=Math.floor((diff%(1000*60))/1000)
 
 document.getElementById("contador").innerHTML=
 
@@ -462,16 +434,14 @@ segundos+" segundos"
 
 /* SCROLL ANIMADO */
 
-const secciones=document.querySelectorAll("section")
+const sections=document.querySelectorAll("section")
 
-function animarScroll(){
+function scrollAnim(){
 
-secciones.forEach(sec=>{
+sections.forEach(sec=>{
 
 const top=sec.getBoundingClientRect().top
-const visible=window.innerHeight-100
-
-if(top < visible){
+if(top < window.innerHeight-120){
 sec.classList.add("visible")
 }
 
@@ -479,8 +449,8 @@ sec.classList.add("visible")
 
 }
 
-window.addEventListener("scroll",animarScroll)
-window.addEventListener("load",animarScroll)
+window.addEventListener("scroll",scrollAnim)
+window.addEventListener("load",scrollAnim)
 
 </script>
 
