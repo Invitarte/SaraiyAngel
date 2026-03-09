@@ -32,100 +32,190 @@ body{
 
 /* ---------------- SOBRE ---------------- */
 
-#portada{
-  height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  background:linear-gradient(145deg,#0b1c2d,#122c44);
-  transition:1s;
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Sobre Animado</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background:#f5f5f5;
 }
+
+/* CONTENEDOR SOBRE */
+
+#sobreContainer{
+position:fixed;
+width:100%;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:#ececec;
+z-index:9999;
+}
+
+/* SOBRE */
 
 .sobre{
-  width:90%;
-  max-width:420px;
-  height:280px;
-  background:#10283f;
-  position:relative;
-  border-radius:10px;
-  box-shadow:0 15px 40px rgba(0,0,0,0.6);
-  overflow:hidden;
+position:relative;
+width:360px;
+height:230px;
+background:#e8ecea;
+border-radius:6px;
+box-shadow:0 25px 60px rgba(0,0,0,0.3);
+perspective:1000px;
 }
 
-.solapa{
-  position:absolute;
-  width:100%;
-  height:100%;
-  background:#0e2235;
-  clip-path:polygon(0 0,100% 0,50% 60%);
-  transform-origin:top;
-  transition:1s;
+/* TAPA */
+
+.tapa{
+position:absolute;
+width:100%;
+height:100%;
+background:#dfe6e3;
+clip-path:polygon(0 0,100% 0,50% 65%);
+transform-origin:top;
+transition:1s;
+z-index:3;
 }
 
-.contenido-sobre{
-  position:absolute;
-  width:100%;
-  height:100%;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  padding:20px;
+/* CUERPO */
+
+.cuerpo{
+position:absolute;
+width:100%;
+height:100%;
+background:#e8ecea;
+z-index:1;
 }
 
-.contenido-sobre h1{
-  font-family:'Great Vibes',cursive;
-  font-size:42px;
-}
-
-.contenido-sobre p{
-  font-size:14px;
-  margin:10px 0;
-}
-
-button{
-  background:transparent;
-  border:1px solid var(--rosagold);
-  color:var(--rosagold);
-  padding:12px 28px;
-  margin-top:15px;
-  border-radius:30px;
-  font-size:16px;
-  cursor:pointer;
-  transition:0.4s;
-}
-
-button:hover{
-  background:var(--rosagold);
-  color:var(--azul);
-}
-
-.abrir .solapa{
-  transform:rotateX(180deg);
-}
+/* SELLO */
 
 .sello{
-width:180px;
-height:180px;
-background:radial-gradient(circle at 30% 30%, #fff8f0, #e8dccf 60%, #d8c7b5);
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+width:90px;
+height:90px;
 border-radius:50%;
-box-shadow:inset 0 0 20px rgba(0,0,0,.2),
-0 10px 25px rgba(0,0,0,.3);
+background:radial-gradient(circle,#d9b27c,#8a5a2b);
 display:flex;
 align-items:center;
 justify-content:center;
 font-family:'Great Vibes',cursive;
-font-size:60px;
-color:#d68bb1;
-animation:latido 2s infinite;
+font-size:36px;
+color:white;
+cursor:pointer;
+z-index:4;
+box-shadow:0 10px 25px rgba(0,0,0,0.4);
+transition:.3s;
 }
 
-@keyframes latido{
-0%{transform:scale(1);}
-50%{transform:scale(1.05);}
-100%{transform:scale(1);}
+.sello:hover{
+transform:translate(-50%,-50%) scale(1.1);
 }
+
+/* ANIMACIONES */
+
+.abrir .tapa{
+transform:rotateX(180deg);
+}
+
+.abrir .sello{
+opacity:0;
+transform:translate(-50%,-80%);
+}
+
+.desaparecer{
+animation:salida 1s forwards;
+}
+
+@keyframes salida{
+
+to{
+opacity:0;
+transform:translateY(-100vh);
+}
+
+}
+
+/* CONTENIDO */
+
+#contenidoInvitacion{
+display:none;
+padding:60px;
+text-align:center;
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- SOBRE -->
+
+<div id="sobreContainer">
+
+<div class="sobre" id="sobre">
+
+<div class="tapa"></div>
+
+<div class="cuerpo"></div>
+
+<div class="sello" onclick="abrirSobre()">
+AyS
+</div>
+
+</div>
+
+</div>
+
+
+<!-- TU INVITACIÓN -->
+
+<div id="contenidoInvitacion">
+
+<h1>Aquí va tu invitación</h1>
+<p>Puedes poner tu página completa aquí.</p>
+
+</div>
+
+
+<script>
+
+function abrirSobre(){
+
+document.getElementById("sobre").classList.add("abrir")
+
+setTimeout(function(){
+
+document.getElementById("sobreContainer").classList.add("desaparecer")
+
+setTimeout(function(){
+
+document.getElementById("sobreContainer").style.display="none"
+document.getElementById("contenidoInvitacion").style.display="block"
+
+},1000)
+
+},900)
+
+}
+
+</script>
+
+
+</body>
+</html>
 
 /* ===== CONTENIDO ===== */
 #contenido{
