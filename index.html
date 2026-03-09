@@ -180,38 +180,6 @@ AyS
 </div>
 
 
-<!-- TU INVITACIÓN -->
-
-<div id="contenidoInvitacion">
-
-<h1>Aquí va tu invitación</h1>
-<p>Puedes poner tu página completa aquí.</p>
-
-</div>
-
-
-<script>
-
-function abrirSobre(){
-
-document.getElementById("sobre").classList.add("abrir")
-
-setTimeout(function(){
-
-document.getElementById("sobreContainer").classList.add("desaparecer")
-
-setTimeout(function(){
-
-document.getElementById("sobreContainer").style.display="none"
-document.getElementById("contenidoInvitacion").style.display="block"
-
-},1000)
-
-},900)
-
-}
-
-</script>
 
 
 </body>
@@ -475,6 +443,28 @@ sec.classList.add('visible');
 function agregarCalendario(){
 window.open("https://calendar.google.com/calendar/render?action=TEMPLATE&text=Boda+Angel+y+Sarai&dates=20260516T150000/20260516T220000&details=Nuestra+Boda&location=Templo+Principal");
 }
+<script>
+
+function abrirSobre(){
+
+document.getElementById("sobre").classList.add("abrir")
+
+setTimeout(function(){
+
+document.getElementById("sobreContainer").classList.add("desaparecer")
+
+setTimeout(function(){
+
+document.getElementById("sobreContainer").style.display="none"
+document.getElementById("contenidoInvitacion").style.display="block"
+
+},1000)
+
+},900)
+
+}
+
+</script>
 
 </script>
 
