@@ -187,6 +187,39 @@ background:#ddd;
 border-radius:10px;
 }
 
+.slider{
+position:relative;
+max-width:300px;
+margin:auto;
+text-align:center;
+}
+
+.slider img{
+width:100%;
+border-radius:15px;
+}
+
+.flecha{
+position:absolute;
+top:50%;
+transform:translateY(-50%);
+background:rgba(0,0,0,0.5);
+color:white;
+border:none;
+font-size:28px;
+padding:10px;
+cursor:pointer;
+border-radius:50%;
+}
+
+.izquierda{
+left:-10px;
+}
+
+.derecha{
+right:-10px;
+}
+
 /* EVENTOS */
 
 .eventos{
@@ -366,9 +399,19 @@ Tu navegador no soporta audio.
 
 <div class="galeria">
 
-<div class="foto" img src="1.JPG"></div>
-<div class="foto"></div>
-<div class="foto"></div>
+<div class="slider">
+
+<button class="flecha izquierda" onclick="cambiarFoto(-1)">❮</button>
+
+<img id="fotoSlider" src="1.JPG">
+<img id="fotoSlider" src="2.JPG">
+<img id="fotoSlider" src="3.JPG">
+<img id="fotoSlider" src="4.JPG">
+<img id="fotoSlider" src="5.JPG">
+
+<button class="flecha derecha" onclick="cambiarFoto(1)">❯</button>
+
+</div>
 
 </div>
 
@@ -489,6 +532,30 @@ sec.classList.add("visible")
 window.addEventListener("scroll",scrollAnim)
 window.addEventListener("load",scrollAnim)
 
+let fotos = [
+"foto1.jpg",
+"foto2.jpg",
+"foto3.jpg",
+"foto4.jpg"
+];
+
+let indice = 0;
+
+function cambiarFoto(direccion){
+
+indice += direccion;
+
+if(indice < 0){
+indice = fotos.length - 1;
+}
+
+if(indice >= fotos.length){
+indice = 0;
+}
+
+document.getElementById("fotoSlider").src = fotos[indice];
+
+}
 </script>
 
 </body>
