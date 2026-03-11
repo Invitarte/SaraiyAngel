@@ -43,18 +43,43 @@ height:600px;
 display:flex;
 position:relative;
 perspective:1000px;
-border:13px solid #f6a5b8; /* borde rosa elegante */
+border:1px solid #f6a5b8; /* borde rosa elegante */
 border-radius:8px;
 }
+.sobre::after{
+content:"";
+position:absolute;
+top:0;
+left:50%;
+transform:translateX(-50%);
+width:3px;
+height:100%;
 
+background:linear-gradient(
+to bottom,
+rgba(0,0,0,0.25),
+rgba(255,255,255,0.5),
+rgba(0,0,0,0.25)
+);
+
+z-index:5;
+}
 .lado{
-width:75%;
+width:50%;
 height:100%;
 background:#0b2f3a;
 transition:1.2s;
 position:relative;
 }
+.izq{
+transform-origin:left;
+box-shadow: inset -10px 0 15px rgba(0,0,0,0.25);
+}
 
+.der{
+transform-origin:right;
+box-shadow: inset 10px 0 15px rgba(255,255,255,0.25);
+}
 .izq{transform-origin:left;}
 .der{transform-origin:right;}
 
