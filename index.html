@@ -487,6 +487,21 @@ Agregar a Google Calendar
 </a>
 
 </section>
+<section>
+
+<h2>Confirmación de pases</h2>
+
+<p>Ingresa tu código para conocer tus accesos</p>
+
+<input type="text" id="codigo" placeholder="Ejemplo: AYS123">
+
+<br><br>
+
+<button class="boton" onclick="verificarCodigo()">Ver mis pases</button>
+
+<p id="resultado" style="margin-top:20px;font-weight:bold;"></p>
+
+</section>
 
 </div>
 
@@ -601,6 +616,34 @@ document.querySelectorAll("section").forEach((sec)=>{
 observer.observe(sec)
 
 })
+<script>
+
+const invitados = {
+"AYS001": {Codigo:"1", pases:3},
+"AYS002": {nombre:"2", pases:3},
+"AYS003": {nombre:"3", pases:4},
+"AYS004": {nombre:"Ana Torres", pases:1}
+};
+
+function verificarCodigo(){
+
+const codigo = document.getElementById("codigo").value.trim().toUpperCase();
+const resultado = document.getElementById("resultado");
+
+if(invitados[codigo]){
+
+resultado.innerHTML = 
+"✨ " + invitados[codigo].nombre + 
+"<br>Tienes <b>" + invitados[codigo].pases + "</b> pases asignados 💌";
+
+}else{
+
+resultado.innerHTML = "❌ Código no encontrado";
+}
+
+}
+
+</script>  
 
 </script>
 
