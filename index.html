@@ -215,7 +215,16 @@ height:220px;
 background:#ddd;
 border-radius:10px;
 }
+.foto img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition: transform 0.3s ease;
+}
 
+.foto img:hover{
+  transform: scale(1.05);
+}
 .slider{
 position:relative;
 max-width:300px;
@@ -427,16 +436,22 @@ Tu navegador no soporta audio.
 <section>
 
 <h2>Galeria de fotos</h2>
+<div id="modal" style="display:none; position:fixed; z-index:999; left:0; top:0; width:100%; height:100%; background: rgba(0,0,0,0.85); justify-content:center; align-items:center;">
+  
+  <span onclick="cerrarImagen()" style="position:absolute; top:20px; right:30px; font-size:35px; color:white; cursor:pointer;">&times;</span>
+  
+  <img id="imagenGrande" style="max-width:90%; max-height:90%; border-radius:15px;">
+</div>
 
 <div class="galeria">
 
 <div class="slider">
 
-<button class="flecha izquierda" onclick="cambiarFoto(-1)">❮</button>
+<button class="flecha izquierda" onclick="cambiarFoto(-1)"><</button>
 
 <img id="fotoSlider" src="1.JPG">
 
-<button class="flecha derecha" onclick="cambiarFoto(1)">❯</button>
+<button class="flecha derecha" onclick="cambiarFoto(1)">></button>
 
 </div>
 
@@ -716,6 +731,14 @@ resultado.innerHTML =
 resultado.innerHTML = "❌ Código no encontrado";
 }
 
+}
+function abrirImagen(src) {
+  document.getElementById("modal").style.display = "flex";
+  document.getElementById("imagenGrande").src = src;
+}
+
+function cerrarImagen() {
+  document.getElementById("modal").style.display = "none";
 }
 </script>
 
